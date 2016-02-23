@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class ViewController: UIViewController {
 
@@ -20,6 +22,17 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func fbBtnPressed(sender: UIButton!) {
+        let facebookLogin = FBSDKLoginManager()
+        facebookLogin.logInWithReadPermissions(["email"]) { (facebookResult: FBSDKLoginManagerLoginResult!, facebookError: NSError!) -> Void in
+            if facebookError != nil {
+                print("facebook login failed. Error \(facebookError)")
+            } else {
+                let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
+                print("successfully loged in with facebook \(accessToken)")
+            }
+        }
+    }
 
 }
 
