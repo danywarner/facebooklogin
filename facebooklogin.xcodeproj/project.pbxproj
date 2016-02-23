@@ -10,6 +10,7 @@
 		655F91A01C7D01F8002481B1 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655F919D1C7D01F8002481B1 /* Bolts.framework */; };
 		655F91A11C7D01F8002481B1 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655F919E1C7D01F8002481B1 /* FBSDKCoreKit.framework */; };
 		655F91A21C7D01F8002481B1 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655F919F1C7D01F8002481B1 /* FBSDKLoginKit.framework */; };
+		655F91A51C7D0A94002481B1 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655F91A41C7D0A94002481B1 /* DataService.swift */; };
 		6593CE2F1C7CE75B00D8304C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6593CE2E1C7CE75B00D8304C /* AppDelegate.swift */; };
 		6593CE311C7CE75B00D8304C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6593CE301C7CE75B00D8304C /* ViewController.swift */; };
 		6593CE341C7CE75B00D8304C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6593CE321C7CE75B00D8304C /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		655F919D1C7D01F8002481B1 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		655F919E1C7D01F8002481B1 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		655F919F1C7D01F8002481B1 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		655F91A41C7D0A94002481B1 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		6593CE2B1C7CE75B00D8304C /* facebooklogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = facebooklogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6593CE2E1C7CE75B00D8304C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6593CE301C7CE75B00D8304C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		655F91A31C7D0A81002481B1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				655F91A41C7D0A94002481B1 /* DataService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		6593CE221C7CE75A00D8304C = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +114,7 @@
 		6593CE2D1C7CE75B00D8304C /* facebooklogin */ = {
 			isa = PBXGroup;
 			children = (
+				655F91A31C7D0A81002481B1 /* Services */,
 				655F919C1C7D01E8002481B1 /* Frameworks */,
 				6593CE4E1C7CF2ED00D8304C /* Util */,
 				6593CE431C7CF04500D8304C /* Resources */,
@@ -299,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6593CE541C7CF84000D8304C /* MaterialTextField.swift in Sources */,
+				655F91A51C7D0A94002481B1 /* DataService.swift in Sources */,
 				6593CE4D1C7CF2AE00D8304C /* MaterialView.swift in Sources */,
 				6593CE311C7CE75B00D8304C /* ViewController.swift in Sources */,
 				6593CE2F1C7CE75B00D8304C /* AppDelegate.swift in Sources */,

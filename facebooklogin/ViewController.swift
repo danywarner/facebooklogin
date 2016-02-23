@@ -14,12 +14,15 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) != nil {
+            self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
+        }
     }
 
     @IBAction func fbBtnPressed(sender: UIButton!) {
@@ -30,6 +33,19 @@ class ViewController: UIViewController {
             } else {
                 let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
                 print("successfully loged in with facebook \(accessToken)")
+                
+                DataService.ds.REF_BASE.authWithOAuthProvider("facebook"
+                    , token: accessToken, withCompletionBlock: { error, authData in
+                        
+                        if error != nil {
+                            print("login failed \(error)")
+                        } else {
+                            print("logen In!! \(authData)")
+                            NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: KEY_UID)
+                            self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
+                        }
+                })
+                
             }
         }
     }
