@@ -120,7 +120,7 @@
                                         </constraints>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oA6-9C-ogr" customClass="MaterialTextField" customModule="facebooklogin" customModuleProvider="target">
                                         <rect key="frame" x="20" y="119" width="520" height="35"/>
@@ -130,7 +130,7 @@
                                         </constraints>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64g-Ni-C4N" customClass="MaterialButton" customModule="facebooklogin" customModuleProvider="target">
                                         <rect key="frame" x="183" y="202" width="195" height="33"/>
@@ -142,6 +142,9 @@
                                         <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="15"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Login / Signup"/>
+                                        <connections>
+                                            <action selector="attemptLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lgn-ZD-DIg"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -180,6 +183,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailField" destination="CPe-mB-ifq" id="9ZB-VA-RsT"/>
+                        <outlet property="passwordField" destination="oA6-9C-ogr" id="2mt-BV-pgY"/>
                         <segue destination="EMC-f6-zb0" kind="show" identifier="loggedIn" id="cZN-Yb-9ds"/>
                     </connections>
                 </viewController>

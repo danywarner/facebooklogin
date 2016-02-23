@@ -12,6 +12,9 @@ import FBSDKLoginKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,6 +52,48 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    
+    
+    
+    @IBAction func attemptLogin(sender: UIButton!) {
+        if let email = emailField.text where email != "", let pwd = passwordField.text where pwd != "" {
+            
+            DataService.ds.REF_BASE.authUser(email, password: pwd, withCompletionBlock: { error, authData in
+                
+                if error != nil {
+                    
+                    if error.code == STATUS_ACCOUNT_NONEXIST {
+                        DataService.ds.REF_BASE.createUser(email, password: pwd, withValueCompletionBlock: { error, result in
+                            
+                            if error != nil {
+                                self.showErrorAlert("could not create account", msg: "Problem creating the account, try something else")
+                            } else {
+                                NSUserDefaults.standardUserDefaults().setValue(result[KEY_UID], forKey: KEY_UID)
+                                DataService.ds.REF_BASE.authUser(email, password: pwd, withCompletionBlock: nil)
+                                    self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
+                                }
+                        })
+                    } else {
+                        self.showErrorAlert("could not log in", msg: "please check your username or passowrd")
+                    }
+                } else {
+                    self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
+                }
+            })
+            
+        } else {
+            showErrorAlert("Email and Password Required", msg: "you must enter an email and a password")
+        }
+    }
+    
+    func showErrorAlert(title: String, msg: String) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+        let action = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+        alert.addAction(action)
+        presentViewController(alert, animated: true, completion: nil)
+    }
+
 
 }
 

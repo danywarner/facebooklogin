@@ -5,5 +5,6 @@ use_frameworks!
 
 target 'facebooklogin' do
 	pod 'Firebase', '>= 2.5.0'
+	pod 'IQKeyboardManagerSwift'
 end
 
